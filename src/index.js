@@ -26,6 +26,12 @@ app.get("/", (req, res) => {
   });
 });
 
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).json({ error: "Internal Server Error" });
+});
+
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
