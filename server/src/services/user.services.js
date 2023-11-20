@@ -35,7 +35,7 @@ const signup = async (payload) => {
     });
   } catch (error) {
     console.error(error);
-    return response.buildFailureResponse("Server Error", 500);
+    return response.buildFailureResponse("Internal Server Error", 500);
   }
 };
 
@@ -59,10 +59,7 @@ const login = async (payload) => {
     return response.buildSuccessResponse("Login Successful", 200, { token });
   } catch (error) {
     console.error(error);
-    return {
-      message: "Server error",
-      statusCode: 500,
-    };
+    return response.buildFailureResponse("Internal Server Error", 500);
   }
 };
 
