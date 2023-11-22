@@ -2,6 +2,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../models/user.models");
 const response = require("../utils/response");
+const glowr = require("glowr");
 
 const signup = async (payload) => {
   try {
@@ -34,7 +35,7 @@ const signup = async (payload) => {
       token,
     });
   } catch (error) {
-    console.error(error);
+    console.error(glowr(error, "bg.red"));
     return response.buildFailureResponse("Internal Server Error", 500);
   }
 };
@@ -58,7 +59,7 @@ const login = async (payload) => {
     });
     return response.buildSuccessResponse("Login Successful", 200, { token });
   } catch (error) {
-    console.error(error);
+    console.error(glowr(error, "bg.red"));
     return response.buildFailureResponse("Internal Server Error", 500);
   }
 };

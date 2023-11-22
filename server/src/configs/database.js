@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
+const glowr = require('glowr')
 
 const connectDB = async (mongo_url) => {
     try {
         const conn = await mongoose.connect(mongo_url);
-        console.log(`MongoDB Connected: ${conn.connection.host}`);
+        console.log(glowr(`MongoDB Connected: ${conn.connection.host}`, `bg.magenta`,));
     }
     catch (error) {
-        console.error(error);
+        console.error(glowr(error, "bg.red"));
         process.exit(1);
     }
 }
