@@ -28,7 +28,11 @@ const getMatchedUsers = async (payload) => {
 
     const matchedPairs = matchUsers(users);
 
-    return response.buildSuccessResponse("Matched users found", 200, matchedPairs);
+    return response.buildSuccessResponse(
+      "Matched users found",
+      200,
+      matchedPairs
+    );
   } catch (error) {
     console.error(error);
     return response.buildFailureResponse("Server Error", 500);
